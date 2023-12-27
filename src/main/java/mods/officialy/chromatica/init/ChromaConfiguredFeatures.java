@@ -16,12 +16,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.List;
 
 public class ChromaConfiguredFeatures {
 
@@ -30,7 +26,7 @@ public class ChromaConfiguredFeatures {
     public static SimpleWeightedRandomList.Builder<BlockState> list = new SimpleWeightedRandomList.Builder<BlockState>()
             .add(Blocks.OAK_LOG.defaultBlockState(), 1).add(Blocks.SPRUCE_LOG.defaultBlockState(), 1);
 
-    public static void boot(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         register(context, RAINBOW_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 new WeightedStateProvider(list),
                 new StraightTrunkPlacer(6, 5, 4),

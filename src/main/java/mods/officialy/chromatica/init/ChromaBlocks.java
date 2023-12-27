@@ -2,16 +2,26 @@ package mods.officialy.chromatica.init;
 
 import mods.officialy.chromatica.Chromatica;
 import mods.officialy.chromatica.common.block.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.loaders.CompositeModelBuilder;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ChromaBlocks {
+  //blocks deferred registry
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, Chromatica.MOD_ID);
+
+    //pylon block via deferred registry
+    public static final DeferredHolder<Block, BlockCrystalPylon> PYLON = BLOCKS.register("pylon", () -> new BlockCrystalPylon(BlockBehaviour.Properties.of()));
+
 //    public static final Registrate REGISTRATE = Chromatica.registrate();
 
   /*  public static final BlockEntry<BlockChromaPlantTile> TILEPLANT = REGISTRATE

@@ -3,7 +3,9 @@ package mods.officialy.chromatica;
 import com.mojang.logging.LogUtils;
 import mods.officialy.chromatica.common.level.gen.biome.ChromaOWRegion;
 import mods.officialy.chromatica.init.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
@@ -17,6 +19,8 @@ import org.slf4j.Logger;
 import terrablender.api.RegionType;
 import terrablender.api.Regions;
 
+import java.util.Map;
+
 @Mod(Chromatica.MOD_ID)
 public class Chromatica {
 
@@ -27,14 +31,15 @@ public class Chromatica {
     public Chromatica() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
-
         ChromaTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
-        ChromaBlocks.register();
+        ChromaBlocks.BLOCKS.register(modEventBus);
         ChromaItems.register();
         ChromaFeatures.PLACED_FEATURE_REGISTRY.register(modEventBus);
 //        ChromaCarvers.CARVER_CONFIGURATIONS.register(modEventBus);
+//        ChromaCarvers.CARVERS.register(modEventBus);
+        ChromaBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ChromaCarvers.CARVERS.register(modEventBus);
         ChromaDim.register();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -43,7 +48,7 @@ public class Chromatica {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            Regions.register(new ChromaOWRegion(new ResourceLocation(MOD_ID, "overworld"),5));
+            Regions.register(new ChromaOWRegion(new ResourceLocation(MOD_ID, "overworld"),10));
 
         } );
     }

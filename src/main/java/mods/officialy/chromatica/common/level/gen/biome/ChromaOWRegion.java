@@ -8,10 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
-import terrablender.api.ParameterUtils;
-import terrablender.api.Region;
-import terrablender.api.RegionType;
-import terrablender.api.VanillaParameterOverlayBuilder;
+import terrablender.api.*;
 
 import java.util.function.Consumer;
 
@@ -35,4 +32,5 @@ public class ChromaOWRegion extends Region {
 
         builder.build().forEach(mapper);
     }
+
 }

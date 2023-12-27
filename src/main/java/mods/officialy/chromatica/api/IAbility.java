@@ -18,7 +18,7 @@ public interface IAbility {
     // Execute the ability action
     boolean execute(Player player, float powerLevel);
 
-    // Apply the ability's effects to the player
+    // Apply the ability's effects to the player or world
     void apply(Player player);
 
     // Get the description component for the ability
@@ -33,4 +33,23 @@ public interface IAbility {
     // Check if the ability costs power every tick
     boolean costsEveryTick();
 
+    // Gets the cooldown time for this ability
+    int getCooldownTime();
+
+    // Check if the ability is currently active
+    boolean isAbilityActive();
+
+    // Activate the ability
+    void activateAbility(Player player);
+
+    // Deactivate the ability
+    void deactivateAbility(Player player);
+
+    // Get the type of the ability
+    AbilityType getAbilityType();
+
+    enum AbilityType {
+        PLAYER,
+        WORLD,
+    }
 }

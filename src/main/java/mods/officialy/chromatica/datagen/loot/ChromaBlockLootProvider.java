@@ -2,6 +2,7 @@ package mods.officialy.chromatica.datagen.loot;
 
 
 import mods.officialy.chromatica.Chromatica;
+import mods.officialy.chromatica.init.ChromaBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -29,6 +30,7 @@ public class ChromaBlockLootProvider extends BlockLootSubProvider {
             Chromatica.LOGGER.info("Generating loot table for " + block);
             dropSelf(block);
         });*/
+        dropSelf(ChromaBlocks.PYLON.get());
     }
 
     @Override
