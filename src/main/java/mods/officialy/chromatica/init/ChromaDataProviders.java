@@ -6,6 +6,7 @@ import mods.officialy.chromatica.datagen.*;
 import mods.officialy.chromatica.datagen.recipe.ChromaCraftingProvider;
 import mods.officialy.chromatica.datagen.loot.ChromaLootTableProvider;
 import mods.officialy.chromatica.datagen.worldgen.ChromaWorldGenProvider;
+import net.minecraft.core.Cloner;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
@@ -35,7 +36,7 @@ public class ChromaDataProviders {
         final var dataGenerator = event.getGenerator();
         final var output = dataGenerator.getPackOutput();
         final var existingFileHelper = event.getExistingFileHelper();
-        final var lookupProvider = event.getLookupProvider().thenApply(ChromaDataProviders::createLookup);
+        final var lookupProvider = event.getLookupProvider();//.thenApply(ChromaDataProviders::createLookup);
 
 
         dataGenerator.addProvider(event.includeClient(), new ChromaLanguageProvider(output));
@@ -46,7 +47,7 @@ public class ChromaDataProviders {
         // Let blockstate provider see generated item models by passing its existing file helper
         dataGenerator.addProvider(event.includeClient(), new ChromaBlockStateProvider(output, itemModelProvider.existingFileHelper));
 
-        dataGenerator.addProvider(event.includeServer(), new ChromaCraftingProvider(output, lookupProvider));
+        dataGenerator.addProvider(event.includeServer(), new ChromaCraftingProvider(output));
         dataGenerator.addProvider(event.includeServer(), ChromaLootTableProvider.create(output));
 
         final var blockTagsProvider = new ChromaBlockTagsProvider(output, lookupProvider, existingFileHelper);
@@ -79,6 +80,6 @@ public class ChromaDataProviders {
                 }
         ));
 
-        return ChromaWorldGenProvider.BUILDER.buildPatch(registryAccess, vanillaLookupProvider);
+        return ChromaWorldGenProvider.BUILDER.buildPatch(registryAccess, vanillaLookupProvider, new Cloner.Factory()).full();
     }
 }

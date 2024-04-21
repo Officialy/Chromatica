@@ -1,8 +1,12 @@
 package mods.officialy.chromatica.api;
 
+import mods.officialy.chromatica.common.block.BlockChromaticalLeaves;
+import mods.officialy.chromatica.init.ChromaBlocks;
 import net.minecraft.ChatFormatting;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,7 +36,7 @@ public enum CrystalColours {
     private final int rgb;
     private final ChatFormatting chatFormatting;
     private final DyeColor dye;
-    private static final Random rand = new Random();
+    private static final RandomSource rand = RandomSource.create();
     public static final CrystalColours[] elements = values();
     private static final HashMap<String, CrystalColours> nameMap = new HashMap<>();
     private static final HashMap<CrystalColours, Integer> colourMap = new HashMap<>();
@@ -54,22 +58,114 @@ public enum CrystalColours {
     public static CrystalColours random() {
         return elements[rand.nextInt(elements.length)];
     }
+
     public static CrystalColours random(RandomSource rand) {
         return elements[rand.nextInt(elements.length)];
     }
+
     public int getColor() {
         return rgb;
     }
+
     public String getDisplayName() {
         return displayName;
     }
+
     public String getEnglishName() {
         return chatFormatting.getName();
     }
+
     public static CrystalColours getColour(String name) {
         return nameMap.get(name);
     }
+
     public static Map<CrystalColours, Integer> getColourMap() {
         return Collections.unmodifiableMap(colourMap);
+    }
+
+    public DyeColor getDye() {
+        return dye;
+    }
+
+    public ChatFormatting getChatFormatting() {
+        return chatFormatting;
+    }
+
+    public static CrystalColours getColour(int rgb) {
+        for (CrystalColours e : elements) {
+            if (e.getColor() == rgb) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public static CrystalColours getColour(DyeColor dye) {
+        for (CrystalColours e : elements) {
+            if (e.getDye() == dye) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public static CrystalColours getColour(ChatFormatting chatFormatting) {
+        for (CrystalColours e : elements) {
+            if (e.getChatFormatting() == chatFormatting) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public static CrystalColours getColourFromDisplayName(String displayName) {
+        for (CrystalColours e : elements) {
+            if (e.getDisplayName().equals(displayName)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public static BlockChromaticalLeaves getLeafFromColor(CrystalColours colour) {
+        return switch (colour) {
+            case BLACK -> ChromaBlocks.BLACK_CHROMATICAL_LEAVES.get();
+            case RED -> ChromaBlocks.RED_CHROMATICAL_LEAVES.get();
+            case GREEN -> ChromaBlocks.GREEN_CHROMATICAL_LEAVES.get();
+            case BROWN -> ChromaBlocks.BROWN_CHROMATICAL_LEAVES.get();
+            case BLUE -> ChromaBlocks.BLUE_CHROMATICAL_LEAVES.get();
+            case PURPLE -> ChromaBlocks.PURPLE_CHROMATICAL_LEAVES.get();
+            case CYAN -> ChromaBlocks.CYAN_CHROMATICAL_LEAVES.get();
+            case LIGHT_GRAY -> ChromaBlocks.LIGHT_GRAY_CHROMATICAL_LEAVES.get();
+            case GRAY -> ChromaBlocks.GRAY_CHROMATICAL_LEAVES.get();
+            case PINK -> ChromaBlocks.PINK_CHROMATICAL_LEAVES.get();
+            case LIME -> ChromaBlocks.LIME_CHROMATICAL_LEAVES.get();
+            case YELLOW -> ChromaBlocks.YELLOW_CHROMATICAL_LEAVES.get();
+            case LIGHT_BLUE -> ChromaBlocks.LIGHT_BLUE_CHROMATICAL_LEAVES.get();
+            case MAGENTA -> ChromaBlocks.MAGENTA_CHROMATICAL_LEAVES.get();
+            case ORANGE -> ChromaBlocks.ORANGE_CHROMATICAL_LEAVES.get();
+            case WHITE -> ChromaBlocks.WHITE_CHROMATICAL_LEAVES.get();
+        };
+    }
+
+    public static Block getCrystalFromColor(CrystalColours color) {
+        return switch (color) {
+            case BLACK -> ChromaBlocks.BLACK_CAVE_CRYSTAL.get();
+            case RED -> ChromaBlocks.RED_CAVE_CRYSTAL.get();
+            case GREEN -> ChromaBlocks.GREEN_CAVE_CRYSTAL.get();
+            case BROWN -> ChromaBlocks.BROWN_CAVE_CRYSTAL.get();
+            case BLUE -> ChromaBlocks.BLUE_CAVE_CRYSTAL.get();
+            case PURPLE -> ChromaBlocks.PURPLE_CAVE_CRYSTAL.get();
+            case CYAN -> ChromaBlocks.CYAN_CAVE_CRYSTAL.get();
+            case LIGHT_GRAY -> ChromaBlocks.LIGHT_GRAY_CAVE_CRYSTAL.get();
+            case GRAY -> ChromaBlocks.GRAY_CAVE_CRYSTAL.get();
+            case PINK -> ChromaBlocks.PINK_CAVE_CRYSTAL.get();
+            case LIME -> ChromaBlocks.LIME_CAVE_CRYSTAL.get();
+            case YELLOW -> ChromaBlocks.YELLOW_CAVE_CRYSTAL.get();
+            case LIGHT_BLUE -> ChromaBlocks.LIGHT_BLUE_CAVE_CRYSTAL.get();
+            case MAGENTA -> ChromaBlocks.MAGENTA_CAVE_CRYSTAL.get();
+            case ORANGE -> ChromaBlocks.ORANGE_CAVE_CRYSTAL.get();
+            case WHITE -> ChromaBlocks.WHITE_CAVE_CRYSTAL.get();
+        };
     }
 }

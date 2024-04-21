@@ -11,12 +11,12 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.util.LazyOptional;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BlockEntityPylon extends BlockEntity {
+public class BlockEntityPylon extends BlockEntity implements ILevelExtension {
     public BlockEntityPylon(BlockPos p_155229_, BlockState p_155230_) {
         super(ChromaBlockEntities.PYLON.get(), p_155229_, p_155230_);
     }
@@ -26,18 +26,8 @@ public class BlockEntityPylon extends BlockEntity {
     }
 
     @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-    }
-
-    @Override
-    public void reviveCaps() {
-        super.reviveCaps();
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return super.getCapability(cap, side);
+    public void invalidateCapabilities() {
+        super.invalidateCapabilities();
     }
 
     @Override
@@ -69,5 +59,15 @@ public class BlockEntityPylon extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag() {
         return super.getUpdateTag();
+    }
+
+    @Override
+    public double getMaxEntityRadius() {
+        return 0;
+    }
+
+    @Override
+    public double increaseMaxEntityRadius(double value) {
+        return 0;
     }
 }

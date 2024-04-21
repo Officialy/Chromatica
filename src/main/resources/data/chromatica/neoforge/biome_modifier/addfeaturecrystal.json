@@ -1,0 +1,23 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "chromatica:black_cave_crystal",
+    "chromatica:red_cave_crystal",
+    "chromatica:green_cave_crystal",
+    "chromatica:brown_cave_crystal",
+    "chromatica:blue_cave_crystal",
+    "chromatica:purple_cave_crystal",
+    "chromatica:cyan_cave_crystal",
+    "chromatica:light_gray_cave_crystal",
+    "chromatica:gray_cave_crystal",
+    "chromatica:pink_cave_crystal",
+    "chromatica:lime_cave_crystal",
+    "chromatica:yellow_cave_crystal",
+    "chromatica:light_blue_cave_crystal",
+    "chromatica:magenta_cave_crystal",
+    "chromatica:orange_cave_crystal",
+    "chromatica:white_cave_crystal"
+  ],
+  "step": "underground_ores"
+}

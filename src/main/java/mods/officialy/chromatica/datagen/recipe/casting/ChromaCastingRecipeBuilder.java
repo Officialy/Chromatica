@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class ChromaCastingRecipeBuilder extends CraftingRecipeBuilder implements RecipeBuilder {
+public class ChromaCastingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public RecipeBuilder unlockedBy(String p_176496_, Criterion<?> p_301065_) {

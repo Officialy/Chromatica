@@ -24,7 +24,7 @@ public class ChromaOWRegion extends Region {
         new ParameterUtils.ParameterPointListBuilder()
                 .temperature(ParameterUtils.Temperature.WARM)
                 .humidity(ParameterUtils.Humidity.NEUTRAL)
-                .continentalness(ParameterUtils.Continentalness.MID_INLAND)
+                .continentalness(ParameterUtils.Continentalness.INLAND)
                 .erosion(ParameterUtils.Erosion.EROSION_2, ParameterUtils.Erosion.EROSION_3)
                 .depth(ParameterUtils.Depth.SURFACE, ParameterUtils.Depth.FLOOR)
                 .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_ASCENDING, ParameterUtils.Weirdness.MID_SLICE_VARIANT_DESCENDING)

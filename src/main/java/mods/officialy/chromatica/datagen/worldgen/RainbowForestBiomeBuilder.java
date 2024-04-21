@@ -1,6 +1,6 @@
 package mods.officialy.chromatica.datagen.worldgen;
 
-import mods.officialy.chromatica.init.ChromaFeatures;
+import mods.officialy.chromatica.init.ChromaPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -17,7 +17,26 @@ public class RainbowForestBiomeBuilder {
 
     public static Biome makeForestBiome(BiomeGenerationSettings.Builder builder) {
 
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ChromaFeatures.RAINBOW_TREE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ChromaPlacedFeatures.CHROMATICAL_TREE);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ChromaPlacedFeatures.TALL_CHROMATICAL_TREE);
+
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.BLACK_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.RED_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.GREEN_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.BROWN_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.BLUE_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.PURPLE_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.CYAN_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.LIGHT_GRAY_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.GRAY_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.PINK_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.LIME_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.YELLOW_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.LIGHT_BLUE_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.MAGENTA_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.ORANGE_CAVE_CRYSTAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ChromaPlacedFeatures.WHITE_CAVE_CRYSTAL);
+
 
         return fullDefinition(
                 true,
